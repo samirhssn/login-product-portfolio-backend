@@ -6,7 +6,8 @@ const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000' }));
+// app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'https://login-product-portfolio-backend.onrender.com' }));
 
 // Enhanced security middleware
 const limiter = rateLimit({
@@ -83,6 +84,11 @@ app.get('/api/products', (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: 'Failed to load products' });
   }
+});
+
+// Health Check
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
 const PORT = process.env.PORT || 5000;
