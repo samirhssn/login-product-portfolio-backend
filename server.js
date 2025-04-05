@@ -7,7 +7,7 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 app.use(express.json());
 // app.use(cors({ origin: 'http://localhost:3000' }));
-app.use(cors({ origin: 'https://login-product-portfolio.web.app/' }));
+app.use(cors({ origin: 'https://login-product-portfolio.web.app' }));
 
 // Enhanced security middleware
 const limiter = rateLimit({
